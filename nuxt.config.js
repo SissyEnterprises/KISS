@@ -91,6 +91,7 @@ export default {
   pwa: {
     manifest: {
       name: 'Sissy App',
+      short_name: 'Sissy App',
       lang: 'en',
       useWebmanifestExtension: false,
       theme_color: '#d81b60',
