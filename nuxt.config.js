@@ -28,12 +28,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@/plugins/vuesax',
-    '@/plugins/vuetify',
-    '@/plugins/community',
-    { src: '@/plugins/persist', ssr: false },
-  ],
+  plugins: ['@/plugins/vuesax', '@/plugins/vuetify', '@/plugins/community'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

@@ -28,6 +28,11 @@ export default class CustomScheme extends LocalScheme {
     this.$auth.reset()
   }
 
+  reset() {
+    this.$auth.setUser(false)
+    this.$auth.$storage.setState('loggedIn', false)
+  }
+
   check() {
     return true
   }

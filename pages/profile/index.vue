@@ -34,13 +34,8 @@ export default {
     }
   },
   mounted() {
-    const unsubscribe = this.$store.subscribe((mutation, state) => {
-      if (mutation.type === 'stateLoaded') {
-        this.theme = this.$store.getters['general/themeDark']
-        this.$vuetify.theme.dark = this.$store.getters['general/themeDark']
-        unsubscribe()
-      }
-    })
+    this.theme = this.$store.getters['general/themeDark']
+    this.$vuetify.theme.dark = this.$store.getters['general/themeDark']
   },
   methods: {
     changeTheme(state) {

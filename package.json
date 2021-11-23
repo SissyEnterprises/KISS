@@ -35,6 +35,7 @@
     "eslint-config-standard": "^16.0.3",
     "eslint-loader": "^4.0.2",
     "eslint-webpack-plugin": "^2.5.4",
+    "flatted": "^3.2.4",
     "gapi": "^0.0.3",
     "gapi-script": "^1.2.0",
     "less": "^4.1.1",

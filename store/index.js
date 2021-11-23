@@ -1,3 +1,4 @@
+import VuexPersistence from 'vuex-persist'
 export const state = () => ({
   stateLoaded: false,
 })
@@ -19,3 +20,8 @@ export const actions = {
     await context.commit('stateLoaded', true)
   },
 }
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+})
+
+export const plugins = [vuexLocal.plugin]
