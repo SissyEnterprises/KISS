@@ -1,7 +1,7 @@
 <template>
   <v-app class="vuesax-compat" @contextmenu.native.prevent>
     <Menubar v-if="$auth.loggedIn" />
-    <v-main class="wp-main-background">
+    <v-main class="wp-start-background">
       <Nuxt> </Nuxt>
     </v-main>
   </v-app>
@@ -10,10 +10,12 @@
 export default {
   mounted() {},
 }
+// background-image: url('~/assets/images/pages/index/background.jpg');
 </script>
 
 <style scoped>
-.wp-main-background {
+.wp-start-background {
+  background-image: url('https://cdn.wallpapersafari.com/1/22/8kIjEY.gif');
   background-size: cover;
   background-position: center;
 }

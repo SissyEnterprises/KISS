@@ -178,24 +178,29 @@ export default {
         icon: 'fas fa-dice-d20',
         sub: [
           {
-            title: 'Games',
-            icon: 'fas fa-gamepad',
-            to: 'games',
-          },
-          {
             title: 'Videos',
             icon: 'fas fa-gamepad',
             to: 'videos',
           },
           {
-            title: 'Hypnosis',
-            icon: 'fas fa-gamepad',
-            to: 'hypnosis',
-          },
-          {
             title: 'Images',
             icon: 'fas fa-gamepad',
             to: 'images',
+          },
+          {
+            title: 'Erotica',
+            icon: 'fas fa-gamepad',
+            to: 'erotica',
+          },
+          {
+            title: 'Games',
+            icon: 'fas fa-gamepad',
+            to: 'games',
+          },
+          {
+            title: 'Hypnosis',
+            icon: 'fas fa-gamepad',
+            to: 'hypnosis',
           },
           {
             title: 'Roulette',

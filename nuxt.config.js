@@ -25,6 +25,7 @@ export default {
     '@/assets/css/defaults.css',
     'vuesax/dist/vuesax.css',
     '@/assets/less/vuesax.less',
+    '@/assets/less/root.less',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -96,11 +97,18 @@ export default {
     theme: {
       dark: true,
     },
+    treeShake: true,
+    defaultAssets: {
+      font: {
+        family: 'Shadows Into Light Two',
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
 
   build: {
+    transpile: ['vuetify/lib'],
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
