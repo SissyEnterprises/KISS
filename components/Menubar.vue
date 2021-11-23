@@ -23,7 +23,7 @@
             profileName
           }}</v-list-item-title>
           <v-list-item-subtitle class="text-center"
-            >Hypnoslave</v-list-item-subtitle
+            >Student</v-list-item-subtitle
           >
         </v-list-item-content>
       </v-list-item>
@@ -61,6 +61,11 @@
             item.sub.some((val) => $route.path.includes(localePath(val.to)))
           "
         >
+          <template #activator>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
           <v-list-item
             v-for="(i, ix) in item.sub"
             :key="i.to + ix"
