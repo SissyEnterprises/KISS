@@ -1,6 +1,6 @@
 {
   "name": "Sissy App",
-  "short_name": "sissy-app",
+  "short_name": "Sissy App",
   "description": "<div align=\"center\"> <img src=\"banner.png\" width=\"500\">",
   "icons": [
     {
@@ -48,7 +48,7 @@
   ],
   "start_url": "/SissyApp/?standalone=true",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#d81b60",
   "theme_color": "#d81b60",
   "lang": "en"
 }
