@@ -10,12 +10,11 @@
 export default {
   mounted() {},
 }
-// background-image: url('~/assets/images/pages/index/background.jpg');
 </script>
 
 <style scoped>
 .wp-start-background {
-  background-image: url('https://cdn.wallpapersafari.com/1/22/8kIjEY.gif');
+  background-image: url('~/assets/images/pages/index/background.webp');
   background-size: cover;
   background-position: center;
 }

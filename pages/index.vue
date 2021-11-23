@@ -16,14 +16,12 @@
                 <div style="margin-top: 1cm; margin-bottom: 1cm">
                   <v-btn
                     :to="localePath('get-started')"
-                    x-large
+                    large
                     rounded
                     color="pink darken-1"
                     >{{ $t('Get started') }}</v-btn
                   >
-                  <v-btn x-large rounded @click="login">{{
-                    $t('Log in')
-                  }}</v-btn>
+                  <v-btn large rounded @click="login">{{ $t('Log in') }}</v-btn>
                 </div>
               </v-col>
             </v-row>
