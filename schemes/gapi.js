@@ -19,7 +19,7 @@ export default class CustomScheme extends LocalScheme {
       return
     }
     await Vue.prototype.$gapi.login()
-    this.$auth.$state.loggedIn = true
+    this.$auth.$storage.setState('loggedIn', true)
   }
 
   // eslint-disable-next-line require-await
@@ -28,17 +28,20 @@ export default class CustomScheme extends LocalScheme {
     this.$auth.reset()
   }
 
+  check() {
+    return true
+  }
+
   // eslint-disable-next-line require-await
   async fetchUser(endpoint) {
-    Vue.prototype.$gapi.getCurrentUser().then((res) => {
-      const profile = res.getBasicProfile()
-      const user = {
-        name: profile.getName(),
-        avatar: profile.getImageUrl(),
-      }
-      this.$auth.setUser(user)
-      console.log('WTF')
-      return true
-    })
+    const res = await Vue.prototype.$gapi.getCurrentUser()
+    const profile = res.getBasicProfile()
+    const user = {
+      name: profile.getName(),
+      avatar: profile.getImageUrl(),
+    }
+    this.$auth.setUser(user)
+    this.$auth.$storage.setState('loggedIn', true)
+    return Promise.resolve()
   }
 }

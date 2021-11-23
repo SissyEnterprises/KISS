@@ -6,7 +6,7 @@ export default {
   target: 'static',
   router: {
     base: '/SissyApp/',
-    middleware: 'auth'
+    middleware: 'auth',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -28,7 +28,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/vuesax', '@/plugins/vuetify'],
+  plugins: ['@/plugins/vuesax', '@/plugins/vuetify', '@/plugins/community'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -69,13 +69,13 @@ export default {
       login: '/',
       logout: '/',
       callback: '/',
-      home: '/schedule'
+      home: '/schedule',
     },
     strategies: {
       google: {
         scheme: '~/schemes/gapi',
         /* ... */
-      }
+      },
     },
   },
 

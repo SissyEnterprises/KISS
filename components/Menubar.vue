@@ -1,7 +1,12 @@
 <template>
   <v-navigation-drawer permanent app :mini-variant="miniVariant">
     <v-list nav :dense="miniVariant">
-      <v-list-item link :to="localePath('profile')" :two-line="!miniVariant">
+      <v-list-item
+        link
+        :to="localePath('profile')"
+        :two-line="!miniVariant"
+        color="pink darken-1"
+      >
         <v-list-item-avatar
           v-if="!miniVariant"
           style="margin-right: 0 !important"
@@ -95,7 +100,7 @@
     <template #append>
       <v-list nav dense>
         <template v-if="$auth.loggedIn">
-          <v-list-item @click="logout">
+          <v-list-item color="pink darken-1" @click="logout">
             <v-tooltip v-if="miniVariant" right>
               <template #activator="{ on, attrs }">
                 <v-list-item-icon v-bind="attrs" v-on="on">
@@ -110,7 +115,7 @@
             <v-list-item-title>{{ $t('Log out') }}</v-list-item-title>
           </v-list-item>
         </template>
-        <v-list-item @click="miniVariant = !miniVariant">
+        <v-list-item color="pink darken-1" @click="miniVariant = !miniVariant">
           <v-tooltip v-if="miniVariant" right>
             <template #activator="{ on, attrs }">
               <v-list-item-icon v-bind="attrs" v-on="on">

@@ -6,18 +6,13 @@
         color="pink darken-1"
         class="sis-hide-arrows"
       >
-        <v-tab>Librarian</v-tab>
-        <v-tab>Facts</v-tab>
-        <v-tab>Skills</v-tab>
+        <v-tab exact :to="localePath('profile')">General</v-tab>
+        <v-tab exact :to="localePath('profile-danger')">Danger zone</v-tab>
       </v-tabs>
     </v-app-bar>
-    <v-row>
-      <v-col>
-        <v-card>
-          <v-card-text>
-            <h1>Library</h1>
-          </v-card-text>
-        </v-card>
+    <v-row no-gutters>
+      <v-col cols="12">
+        <nuxt></nuxt>
       </v-col>
     </v-row>
   </v-container>

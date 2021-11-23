@@ -3,9 +3,12 @@
     <v-row>
       <v-col cols="12">
         <v-card>
-          <v-card-title>General</v-card-title>
+          <v-card-title>Danger zone</v-card-title>
           <v-card-text>
-            <p>General settings</p>
+            <p>
+              Settings and actions that might make you cry after using. Use with
+              care!
+            </p>
           </v-card-text>
         </v-card>
       </v-col>
