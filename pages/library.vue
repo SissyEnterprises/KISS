@@ -1,11 +1,7 @@
 <template>
   <v-container fluid>
     <v-app-bar fixed app dense>
-      <v-tabs
-        :show-arrows="false"
-        color="pink darken-1"
-        class="sis-hide-arrows"
-      >
+      <v-tabs :show-arrows="false" color="primary" class="sis-hide-arrows">
         <v-tab>Librarian</v-tab>
         <v-tab>Facts</v-tab>
         <v-tab>Skills</v-tab>

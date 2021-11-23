@@ -1,11 +1,7 @@
 <template>
   <v-container fluid>
     <v-app-bar fixed app dense>
-      <v-tabs
-        :show-arrows="false"
-        color="pink darken-1"
-        class="sis-hide-arrows"
-      >
+      <v-tabs :show-arrows="false" color="primary" class="sis-hide-arrows">
         <v-tab exact :to="localePath('school')">Map</v-tab>
         <v-tab exact :to="localePath('school-faculty')">Faculty</v-tab>
         <v-tab exact :to="localePath('school-students')">Students</v-tab>

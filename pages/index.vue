@@ -19,7 +19,7 @@
                     :to="localePath('get-started')"
                     large
                     rounded
-                    color="pink darken-1"
+                    color="primary"
                     >{{ $t('Get started') }}</v-btn
                   >
                   <v-btn large rounded @click="login">{{ $t('Log in') }}</v-btn>

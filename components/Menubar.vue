@@ -5,7 +5,7 @@
         link
         :to="localePath('profile')"
         :two-line="!miniVariant"
-        color="pink darken-1"
+        color="primary"
       >
         <v-list-item-avatar
           v-if="!miniVariant"
@@ -34,7 +34,7 @@
         <v-list-item
           v-if="!item.sub"
           :key="item.to"
-          color="pink darken-1"
+          color="primary"
           link
           :to="localePath(item.to)"
         >
@@ -56,7 +56,7 @@
           v-else
           :key="item.title"
           :prepend-icon="item.icon"
-          color="pink darken-1"
+          color="primary"
           :value="
             item.sub.some((val) => $route.path.includes(localePath(val.to)))
           "
@@ -99,7 +99,7 @@
     <template #append>
       <v-list nav dense>
         <template v-if="$auth.loggedIn">
-          <v-list-item color="pink darken-1" @click="logout">
+          <v-list-item color="primary" @click="logout">
             <v-tooltip v-if="miniVariant" right>
               <template #activator="{ on, attrs }">
                 <v-list-item-icon v-bind="attrs" v-on="on">
@@ -114,7 +114,7 @@
             <v-list-item-title>{{ $t('Log out') }}</v-list-item-title>
           </v-list-item>
         </template>
-        <v-list-item color="pink darken-1" @click="miniVariant = !miniVariant">
+        <v-list-item color="primary" @click="miniVariant = !miniVariant">
           <v-tooltip v-if="miniVariant" right>
             <template #activator="{ on, attrs }">
               <v-list-item-icon v-bind="attrs" v-on="on">
@@ -153,19 +153,9 @@ export default {
         icon: 'fas fa-university',
       },
       {
-        title: 'Schedule',
-        to: 'schedule',
-        icon: 'fas fa-calendar',
-      },
-      {
         title: 'Progress tree',
         to: 'tree',
         icon: 'fab fa-pagelines',
-      },
-      {
-        title: 'Classes',
-        to: 'classes',
-        icon: 'fas fa-leaf',
       },
       {
         title: 'Library',
@@ -173,9 +163,14 @@ export default {
         icon: 'fas fa-book',
       },
       {
-        title: 'Detention',
-        to: 'detention',
-        icon: 'fas fa-sad-cry',
+        title: 'Schedule',
+        to: 'schedule',
+        icon: 'fas fa-calendar',
+      },
+      {
+        title: 'Inventory',
+        to: 'inventory',
+        icon: 'fas fa-toolbox',
       },
       {
         title: 'Activities',
@@ -217,11 +212,6 @@ export default {
             to: 'dildo-hero',
           },
         ],
-      },
-      {
-        title: 'Inventory',
-        to: 'inventory',
-        icon: 'fas fa-toolbox',
       },
       {
         title: 'Information',

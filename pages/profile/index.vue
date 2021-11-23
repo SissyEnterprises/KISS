@@ -58,7 +58,7 @@
             <v-switch
               v-model="theme"
               :label="$vuetify.theme.dark ? 'Dark' : 'Light'"
-              color="pink darken-1"
+              color="primary"
               @change="changeTheme"
             ></v-switch>
           </v-card-text>

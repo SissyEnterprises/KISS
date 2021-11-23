@@ -1,11 +1,7 @@
 <template>
   <v-container fluid>
     <v-app-bar fixed app dense>
-      <v-tabs
-        :show-arrows="false"
-        color="pink darken-1"
-        class="sis-hide-arrows"
-      >
+      <v-tabs :show-arrows="false" color="primary" class="sis-hide-arrows">
         <v-tab exact :to="localePath('profile')">General</v-tab>
         <v-tab exact :to="localePath('profile-haptic')">Haptic</v-tab>
         <v-tab exact :to="localePath('profile-danger')">Danger zone</v-tab>
