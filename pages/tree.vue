@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="ma-0 pa-0 fill-height">
-    <v-app-bar fixed app dense color="#fff">
+    <v-app-bar fixed app dense>
       <v-tabs
         :show-arrows="false"
         color="pink darken-1"

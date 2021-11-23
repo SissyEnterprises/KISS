@@ -28,7 +28,12 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/vuesax', '@/plugins/vuetify', '@/plugins/community'],
+  plugins: [
+    '@/plugins/vuesax',
+    '@/plugins/vuetify',
+    '@/plugins/community',
+    { src: '@/plugins/persist', ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -91,6 +96,12 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
+
+  vuetify: {
+    theme: {
+      dark: true,
+    },
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
 

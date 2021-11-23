@@ -3,8 +3,29 @@
     <v-row>
       <v-col cols="12">
         <v-card>
+          <v-card-title>Community</v-card-title>
           <v-card-text>
-            <h1>Censor (not yet ready)</h1>
+            <v-container fluid class="pa-0 ma-0">
+              <v-row no-gutters align="center" justify="center">
+                <v-col cols="6" align="center">
+                  <iframe
+                    src="https://discord.com/widget?id=912496359112843304&theme=dark"
+                    style="width: 100%; max-width: 10cm"
+                    height="400"
+                    allowtransparency="true"
+                    frameborder="0"
+                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                  ></iframe>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="12">
+        <v-card>
+          <v-card-title>Censor (not yet ready)</v-card-title>
+          <v-card-text>
             <p>
               This is a tool that when run will detect various kinds of visuals
               on your screen and attempt to censor them.

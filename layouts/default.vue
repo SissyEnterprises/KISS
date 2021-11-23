@@ -8,13 +8,19 @@
 </template>
 <script>
 export default {
-  mounted() {},
+  mounted() {
+    const unsubscribe = this.$store.subscribe((mutation, state) => {
+      if (mutation.type === 'stateLoaded') {
+        this.$vuetify.theme.dark = this.$store.getters['general/themeDark']
+        unsubscribe()
+      }
+    })
+  },
 }
 </script>
 
 <style>
 .wp-main-background {
-  background: url('~/assets/images/pages/index/background.jpg');
   background-size: cover;
   background-position: center;
 }

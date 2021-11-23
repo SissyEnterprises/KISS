@@ -169,6 +169,11 @@ export default {
         icon: 'fas fa-book',
       },
       {
+        title: 'Detention',
+        to: 'detention',
+        icon: 'fas fa-sad-cry',
+      },
+      {
         title: 'Activities',
         icon: 'fas fa-dice-d20',
         sub: [
@@ -203,11 +208,6 @@ export default {
             to: 'dildo-hero',
           },
         ],
-      },
-      {
-        title: 'Detention',
-        to: 'detention',
-        icon: 'fas fa-sad-cry',
       },
       {
         title: 'Toolbox',
