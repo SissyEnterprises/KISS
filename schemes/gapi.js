@@ -15,10 +15,8 @@ export default class CustomScheme extends LocalScheme {
 
   // eslint-disable-next-line require-await
   async login(endpoint) {
-    if (!this.options.endpoints.login) {
-      return
-    }
     await Vue.prototype.$gapi.login()
+    await this.$auth.fetchUser()
     this.$auth.$storage.setState('loggedIn', true)
   }
 
@@ -26,11 +24,6 @@ export default class CustomScheme extends LocalScheme {
   async logout(endpoint) {
     await Vue.prototype.$gapi.logout()
     this.$auth.reset()
-  }
-
-  reset() {
-    this.$auth.setUser(false)
-    this.$auth.$storage.setState('loggedIn', false)
   }
 
   check() {
