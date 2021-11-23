@@ -94,6 +94,7 @@ export default {
       lang: 'en',
       useWebmanifestExtension: false,
       theme_color: '#d81b60',
+      background_color: '#d81b60',
     },
   },
 
