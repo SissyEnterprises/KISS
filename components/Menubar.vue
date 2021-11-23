@@ -179,37 +179,37 @@ export default {
         sub: [
           {
             title: 'Videos',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-film',
             to: 'videos',
           },
           {
             title: 'Images',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-images',
             to: 'images',
           },
           {
             title: 'Erotica',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-book-open',
             to: 'erotica',
           },
           {
             title: 'Games',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-chess-queen',
             to: 'games',
           },
           {
             title: 'Hypnosis',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-hospital-symbol',
             to: 'hypnosis',
           },
           {
             title: 'Roulette',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-circle-notch',
             to: 'roulette',
           },
           {
             title: 'Dildo hero',
-            icon: 'fas fa-gamepad',
+            icon: 'fas fa-pen',
             to: 'dildo-hero',
           },
         ],
