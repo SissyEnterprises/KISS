@@ -49,6 +49,6 @@
   "start_url": "/SissyApp/?standalone=true",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#333",
+  "theme_color": "#d81b60",
   "lang": "en"
 }
