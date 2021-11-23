@@ -1,10 +1,10 @@
 <div align="center">
 <img src="banner.png" width="500">
   
-# Sissy App
-A fun project for turning people into sissies 💘
+# K.I.S.S.
+Kinky Instutite and Sex School
 
-[![Website](https://img.shields.io/website?down_message=offline&style=for-the-badge&up_message=online&url=https%3A%2F%2Fsissyenterprises.github.io%2FSissyApp%2F)](https://sissyenterprises.github.io/SissyApp/)
+[![Website](https://img.shields.io/website?down_message=offline&style=for-the-badge&up_message=online&url=https%3A%2F%2Fsissyenterprises.github.io%2FKISS%2F)](https://sissyenterprises.github.io/KISS/)
 </div>
 
 ## Disclaimer

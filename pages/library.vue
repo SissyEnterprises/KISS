@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-app-bar fixed app dense>
       <v-tabs
         :show-arrows="false"
@@ -14,8 +14,9 @@
     <v-row>
       <v-col>
         <v-card>
+          <v-card-title>Library</v-card-title>
           <v-card-text>
-            <h1>Library</h1>
+            <p>Source of knowledge.</p>
           </v-card-text>
         </v-card>
       </v-col>

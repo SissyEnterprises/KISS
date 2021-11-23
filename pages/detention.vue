@@ -1,10 +1,10 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col>
         <v-card>
+          <v-card-title>Detention</v-card-title>
           <v-card-text>
-            <h1>Detention</h1>
             <p>
               If you for any reason need to be punished, this is where you go.
             </p>

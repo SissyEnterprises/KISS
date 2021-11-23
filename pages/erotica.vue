@@ -1,10 +1,29 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col>
         <v-card>
           <v-card-text>
-            <h1>Classes</h1>
+            <v-text-field
+              prepend-inner-icon="fas fa-search"
+              label="Search"
+              outlined
+            ></v-text-field>
+            <v-row>
+              <v-col>
+                <v-select label="Categories" outlined hide-details></v-select>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-card>
+          <v-card-title>Erotica</v-card-title>
+          <v-card-text>
+            <p>Stories</p>
           </v-card-text>
         </v-card>
       </v-col>

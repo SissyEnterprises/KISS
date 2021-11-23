@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col>
         <v-stepper v-model="step" vertical>
@@ -12,8 +12,8 @@
             <v-card class="mb-12" min-height="200px">
               <v-card-text>
                 <p>
-                  In order to use the Sissy App you are going to need to do a
-                  couple of things first.
+                  In order to enter K.I.S.S you are going to need to do a couple
+                  of things first.
                 </p>
                 <v-checkbox
                   v-model="step1.above18"

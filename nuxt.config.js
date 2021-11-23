@@ -5,13 +5,13 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: '/SissyApp/',
+    base: '/KISS/',
     middleware: 'auth',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'SissyApp',
+    title: 'KISS',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -77,7 +77,7 @@ export default {
       login: '/',
       logout: '/',
       callback: '/',
-      home: '/schedule',
+      home: '/school',
     },
     strategies: {
       google: {
@@ -90,8 +90,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'Sissy App',
-      short_name: 'Sissy App',
+      name: 'Kink Institute and Sex School',
+      short_name: 'KISS',
       lang: 'en',
       useWebmanifestExtension: false,
       theme_color: '#d81b60',
@@ -105,6 +105,14 @@ export default {
   vuetify: {
     theme: {
       dark: true,
+      themes: {
+        light: {
+          primary: '#d81b60',
+        },
+        dark: {
+          primary: '#d81b60',
+        },
+      },
     },
     treeShake: true,
     defaultAssets: {

@@ -1,12 +1,12 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col>
         <v-card>
           <v-card-text>
             <h1>Dildo hero</h1>
             <p>
-              The trainer is a tool for setting up videos similar to one of your
+              Dildo Hero is a tool for setting up videos similar to one of your
               favorite kind of videos: Dildo Hero (dildo optional)!
             </p>
             <p>

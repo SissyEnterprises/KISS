@@ -61,12 +61,6 @@
             item.sub.some((val) => $route.path.includes(localePath(val.to)))
           "
         >
-          <template #activator>
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </template>
-
           <v-list-item
             v-for="(i, ix) in item.sub"
             :key="i.to + ix"
@@ -149,6 +143,11 @@ export default {
     miniVariant: true,
     items: [
       {
+        title: 'School',
+        to: 'school',
+        icon: 'fas fa-university',
+      },
+      {
         title: 'Schedule',
         to: 'schedule',
         icon: 'fas fa-calendar',
@@ -215,9 +214,14 @@ export default {
         ],
       },
       {
-        title: 'Toolbox',
-        to: 'toolbox',
+        title: 'Inventory',
+        to: 'inventory',
         icon: 'fas fa-toolbox',
+      },
+      {
+        title: 'Information',
+        to: 'information',
+        icon: 'fas fa-exclamation-circle',
       },
     ],
   }),

@@ -10,9 +10,10 @@
                   style="margin-top: 1cm; padding-bottom: 0.5cm"
                   class="text-center"
                 >
-                  Sissy App
+                  K.I.S.S.
                 </h1>
-                <p>Welcome to your journey into sissyhood!</p>
+                <p>Kink Institute and Sex School</p>
+                <p class="red--text">Super early pre-alpha</p>
                 <div style="margin-top: 1cm; margin-bottom: 1cm">
                   <v-btn
                     :to="localePath('get-started')"

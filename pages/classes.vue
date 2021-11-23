@@ -1,10 +1,11 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col>
         <v-card>
+          <v-card-title>Classes</v-card-title>
           <v-card-text>
-            <h1>Classes</h1>
+            <p>Scheduled classes</p>
           </v-card-text>
         </v-card>
       </v-col>

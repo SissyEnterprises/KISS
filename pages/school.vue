@@ -1,14 +1,22 @@
 <template>
   <v-container fluid>
+    <v-app-bar fixed app dense>
+      <v-tabs
+        :show-arrows="false"
+        color="pink darken-1"
+        class="sis-hide-arrows"
+      >
+        <v-tab>Map</v-tab>
+        <v-tab>Faculty</v-tab>
+        <v-tab>Students</v-tab>
+      </v-tabs>
+    </v-app-bar>
     <v-row>
-      <v-col>
+      <v-col cols="12">
         <v-card>
+          <v-card-title>School</v-card-title>
           <v-card-text>
-            <h1>Roulette</h1>
-            <p>
-              A simple tool for playing fap roulettes. Pick an image, roll for
-              numbers, do what it says. Simple!
-            </p>
+            <p>I will create a map here of the school.</p>
           </v-card-text>
         </v-card>
       </v-col>

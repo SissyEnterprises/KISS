@@ -1,10 +1,11 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
-      <v-col>
+      <v-col cols="12">
         <v-card>
+          <v-card-title>Inventory</v-card-title>
           <v-card-text>
-            <h1>Activities</h1>
+            <p>Your stuff goes here.</p>
           </v-card-text>
         </v-card>
       </v-col>
