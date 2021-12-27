@@ -25,6 +25,13 @@
                   <v-btn large rounded @click="login">{{ $t('Log in') }}</v-btn>
                 </div>
               </v-col>
+              <v-col cols="12">
+                <div style="margin-bottom: 0.5cm">
+                  <v-btn text small :to="localePath('legal-privacy-policy')">{{
+                    $t('Privacy Policy')
+                  }}</v-btn>
+                </div>
+              </v-col>
             </v-row>
           </v-container>
         </v-card>

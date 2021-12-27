@@ -109,7 +109,7 @@
                   with. (WIP)
                 </p>
                 <v-simple-table v-if="false">
-                  <template>
+                  <template #default>
                     <tbody>
                       <tr>
                         <td></td>
