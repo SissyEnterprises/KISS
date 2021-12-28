@@ -31,15 +31,23 @@
                   :disabled="!schedule[day].enabled"
                   label="From"
                   outlined
-                  :items="['9:00']"
+                  :items="fromToOptions"
                 ></v-select>
                 <v-select
                   v-model="schedule[day].to"
                   :disabled="!schedule[day].enabled"
                   label="To"
                   outlined
-                  :items="['18:00']"
-                  hide-details
+                  :items="fromToOptions"
+                  :rules="[
+                    (val) =>
+                      parseInt(val.split(':')[0]) * 60 +
+                        parseInt(val.split(':')[1]) >
+                      parseInt(schedule[day].from.split(':')[0]) * 60 +
+                        parseInt(schedule[day].from.split(':')[1])
+                        ? true
+                        : $t('You can\'t stop before you start!'),
+                  ]"
                 ></v-select>
               </v-col>
             </v-row>
@@ -73,6 +81,25 @@ export default {
   data() {
     return {
       theme: this.$store.getters['general/themeDark'],
+      fromToOptions: [
+        '6:00',
+        '7:00',
+        '8:00',
+        '9:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+      ],
       schedule: {
         days: [
           'monday',
