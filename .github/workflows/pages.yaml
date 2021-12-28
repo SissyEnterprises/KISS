@@ -27,9 +27,15 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          GCP_API_KEY: ${{ secrets.GCP_API_KEY }}
+          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
 
       - name: Generate
         run: npm run generate
+        env:
+          GCP_API_KEY: ${{ secrets.GCP_API_KEY }}
+          GCP_CLIENT_ID: ${{ secrets.GCP_CLIENT_ID }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

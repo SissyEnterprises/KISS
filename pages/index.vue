@@ -30,6 +30,13 @@
                   <v-btn text small :to="localePath('legal-privacy-policy')">{{
                     $t('Privacy Policy')
                   }}</v-btn>
+                  <v-btn
+                    text
+                    small
+                    href="https://discord.gg/Tbd5p92VMt"
+                    target="_blank"
+                    >{{ $t('Discord') }}</v-btn
+                  >
                 </div>
               </v-col>
             </v-row>

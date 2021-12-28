@@ -61,6 +61,14 @@
             item.sub.some((val) => $route.path.includes(localePath(val.to)))
           "
         >
+          <template #prependIcon>
+            <v-tooltip v-if="miniVariant" right>
+              <template #activator="{ on, attrs }">
+                <v-icon v-bind="attrs" v-on="on">{{ item.icon }}</v-icon>
+              </template>
+              <span>{{ $t(item.title) }}</span>
+            </v-tooltip>
+          </template>
           <template #activator>
             <v-list-item-content>
               <v-list-item-title>{{ item.title }}</v-list-item-title>

@@ -3,9 +3,8 @@ import VueGapi from 'vue-gapi'
 import { LocalScheme } from '~auth/runtime'
 
 Vue.use(VueGapi, {
-  apiKey: 'AIzaSyBomLRdD6gwfnfOTc-XrXg3z1lNdz10TAs',
-  clientId:
-    '177245628514-lu7v4lfvkp01hmtnr12h2g4j4o56im8v.apps.googleusercontent.com',
+  apiKey: process.env.GCP_API_KEY,
+  clientId: process.env.GCP_CLIENT_ID,
   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
   scope: 'https://www.googleapis.com/auth/drive.appdata',
 })
