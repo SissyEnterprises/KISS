@@ -45,6 +45,13 @@ class DriveStorage {
 
   async setItem(key, data) {
     // console.log('WTF: ', key, ' ', data)
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms))
+    }
+    while (Vue.prototype.$gapi.clientProvider.client === null) {
+      await sleep(200)
+      console.log('Waiting for gapi client')
+    }
 
     // eslint-disable-next-line no-unused-vars
     const _ = new Promise((resolve, reject) => {

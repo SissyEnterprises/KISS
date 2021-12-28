@@ -7,17 +7,19 @@
         :two-line="!miniVariant"
         color="primary"
       >
-        <v-list-item-avatar
-          v-if="!miniVariant"
-          style="margin-right: 0 !important"
-        >
-          <!-- <v-icon>fas fa-home</v-icon>-->
-          <v-img :src="profileAvatarUrl"></v-img>
-        </v-list-item-avatar>
-        <v-list-item-icon v-else>
-          <!-- <v-icon>fas fa-home</v-icon>-->
-          <v-img :src="profileAvatarUrl"></v-img>
-        </v-list-item-icon>
+        <template v-if="profileAvatarUrl">
+          <v-list-item-avatar
+            v-if="!miniVariant"
+            style="margin-right: 0 !important"
+          >
+            <!-- <v-icon>fas fa-home</v-icon>-->
+            <v-img :src="profileAvatarUrl"></v-img>
+          </v-list-item-avatar>
+          <v-list-item-icon v-else>
+            <!-- <v-icon>fas fa-home</v-icon>-->
+            <v-img :src="profileAvatarUrl"></v-img>
+          </v-list-item-icon>
+        </template>
         <v-list-item-content>
           <v-list-item-title class="text-h5 text-center">{{
             profileName
