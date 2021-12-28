@@ -10,7 +10,10 @@ export default {
     base: '/KISS/',
     middleware: 'auth',
   },
-
+  env: {
+    GCP_API_KEY: process.env.GCP_API_KEY,
+    GCP_CLIENT_ID: process.env.GCP_CLIENT_ID,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'KISS',

@@ -85,7 +85,8 @@ console.log(res)
           Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
             .list({
               spaces: 'appDataFolder',
-              fields: 'nextPageToken, files(id, name)',
+              fields:
+                'nextPageToken, files(id, name, webContentLink, webViewLink)',
               pageSize: 100,
             })
             .then((res) => {

@@ -8,6 +8,7 @@ Vue.use(VueGapi, {
   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
   scope: 'https://www.googleapis.com/auth/drive.appdata',
 })
+
 export default class CustomScheme extends LocalScheme {
   // Override `fetchUser` method of `local` scheme
 
