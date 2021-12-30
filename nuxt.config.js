@@ -30,7 +30,7 @@ export default {
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { hid: 'robots', name: 'robots', content: 'index, follow' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/KISS/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -101,6 +101,10 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon: {
+      source: 'static/icon.png',
+      fileName: 'icon.png',
+    },
     manifest: {
       name: 'Kink Institute and Sex School',
       short_name: 'KISS',
