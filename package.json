@@ -39,6 +39,7 @@
     "flatted": "^3.2.4",
     "gapi": "^0.0.3",
     "gapi-script": "^1.2.0",
+    "javascript-obfuscator": "^2.19.1",
     "less": "^4.1.1",
     "less-loader": "^7.3.0",
     "localforage": "^1.10.0",
