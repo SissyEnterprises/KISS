@@ -216,7 +216,7 @@
 
 <script>
 export default {
-  auth: false,
+  auth: 'guest',
   layout: 'start',
   data() {
     return {

@@ -241,7 +241,7 @@ const vuexLocal = new VuexPersistence({
   supportCircular: true,
   asyncStorage: true,
   key: 'state-0',
-  modules: ['general'],
+  modules: ['general', 'progress'],
   restoreState: async (key, storage) => {
     await Vue.prototype.$gapi.getGapiClient()
     return await storage.getItem(key)
