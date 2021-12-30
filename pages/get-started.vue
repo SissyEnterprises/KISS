@@ -46,13 +46,51 @@
           </v-stepper-content>
 
           <v-stepper-step :complete="step > 2" step="2" color="primary">
+            {{ $t('Privacy Policy') }}
+            <small>{{ $t('Information about your personal data') }}</small>
+          </v-stepper-step>
+
+          <v-stepper-content step="2">
+            <v-card
+              class="mb-12 overflow-y-auto"
+              min-height="200px"
+              max-height="500px"
+            >
+              <v-card-text>
+                <template v-if="privacyPolicy">
+                  <nuxt-content :document="privacyPolicy"></nuxt-content>
+                </template>
+              </v-card-text>
+            </v-card>
+
+            <v-checkbox
+              v-model="step2.privacyPolicy"
+              color="primary"
+              label="Have you read and agree to the Privacy Policy?"
+              hint="Don't be like Kyle, read the fine print."
+              persistent-hint
+            ></v-checkbox>
+            <v-btn
+              :disabled="!step2.privacyPolicy"
+              color="primary"
+              @click="step = 3"
+            >
+              {{ $t('Continue') }}
+            </v-btn>
+
+            <v-btn text color="primary" @click="step = 1">
+              {{ $t('Cancel') }}
+            </v-btn>
+          </v-stepper-content>
+
+          <v-stepper-step :complete="step > 3" step="3" color="primary">
             {{ $t('Grant permissions') }}
             <small>{{
               $t("You gotta invite us in, we're like vampires!")
             }}</small>
           </v-stepper-step>
 
-          <v-stepper-content step="2">
+          <v-stepper-content step="3">
             <v-card class="mb-12">
               <v-card-text>
                 <p>
@@ -63,16 +101,16 @@
                   If we already have the proper permissions you'll just see a
                   window pop up and disappear.
                 </p>
-                <v-btn @click="step2.showDialog = true"
+                <v-btn @click="step3.showDialog = true"
                   >Why do you need these permissions?</v-btn
                 >
                 <v-checkbox
-                  v-model="step2.understand"
+                  v-model="step3.understand"
                   color="primary"
                   label="I understand what it means to grant these permissions"
                 ></v-checkbox>
                 <v-btn
-                  :disabled="!step2.understand"
+                  :disabled="!step3.understand"
                   block
                   large
                   color="primary"
@@ -83,24 +121,24 @@
             </v-card>
 
             <v-btn
-              :disabled="!step2.understand || !step2.granted"
+              :disabled="!step3.understand || !step3.granted"
               color="primary"
-              @click="step = 3"
+              @click="step = 4"
             >
               Continue
             </v-btn>
 
-            <v-btn text color="primary" @click="step = 1">
+            <v-btn text color="primary" @click="step = 2">
               {{ $t('Previous') }}
             </v-btn>
           </v-stepper-content>
 
-          <v-stepper-step step="3" color="primary">
+          <v-stepper-step step="4" color="primary">
             {{ $t('Finalize') }}
             <small>{{ $t('Summary of your settings') }}</small>
           </v-stepper-step>
 
-          <v-stepper-content step="3">
+          <v-stepper-content step="4">
             <v-card class="mb-12">
               <v-card-text>
                 <p>Thank you for joining!</p>
@@ -123,14 +161,14 @@
 
             <v-btn color="primary" @click="finalize"> Log in </v-btn>
 
-            <v-btn color="primary" text @click="step = 2">
+            <v-btn color="primary" text @click="step = 3">
               {{ $t('Previous') }}
             </v-btn>
           </v-stepper-content>
         </v-stepper>
       </v-col>
     </v-row>
-    <v-dialog v-model="step2.showDialog" max-width="20cm">
+    <v-dialog v-model="step3.showDialog" max-width="20cm">
       <v-card>
         <v-card-title>Permissions</v-card-title>
         <v-card-text>
@@ -163,8 +201,12 @@
             else should be required for the base functionality. We might want
             access to things like your gmail in order to allow the app to send
             emails without requiring a server, because again the app is
-            radically serverless in its approach, but it's still just an idea
-            that's being floated.
+            radically serverless in its approach.
+          </p>
+          <p>
+            If we develop new features that require more permissions later the
+            Privay Policy will be updated and you will have to explicitly grant
+            elevated privileges before any such changes take effect.
           </p>
         </v-card-text>
       </v-card>
@@ -178,12 +220,16 @@ export default {
   layout: 'start',
   data() {
     return {
+      privacyPolicy: null,
       step: 1,
       step1: {
         above18: false,
         createdAccount: false,
       },
       step2: {
+        privacyPolicy: false,
+      },
+      step3: {
         showDialog: false,
         understand: false,
         granted: false,
@@ -200,10 +246,17 @@ export default {
       link: [...i18nHead.link],
     }
   },
+  mounted() {
+    this.$content('privacy-policy')
+      .fetch()
+      .then((doc) => {
+        this.privacyPolicy = doc
+      })
+  },
   methods: {
     grantPermissions() {
       this.$gapi.login()
-      this.step2.granted = true
+      this.step3.granted = true
     },
     finalize() {
       this.$auth.loginWith('google').then(() => {

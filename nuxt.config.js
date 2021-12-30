@@ -1,3 +1,4 @@
+import WebpackObfuscator from 'webpack-obfuscator'
 require('dotenv').config()
 
 export default {
@@ -113,6 +114,11 @@ export default {
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
+  loading: {
+    color: '#d81b60',
+    height: '3px',
+  },
+
   vuetify: {
     theme: {
       dark: true,
@@ -138,8 +144,9 @@ export default {
   build: {
     transpile: ['vuetify/lib'],
     extend(config, ctx) {
-      // Run ESLint on save
+      // Development options
       if (ctx.isDev && ctx.isClient) {
+        // Run ESLint on save
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -149,6 +156,45 @@ export default {
             fix: true,
           },
         })
+      }
+      // Production options
+      else {
+        config.plugins.push(
+          new WebpackObfuscator(
+            {
+              compact: true,
+              controlFlowFlattening: false,
+              deadCodeInjection: false,
+              debugProtection: true,
+              debugProtectionInterval: true,
+              disableConsoleOutput: true,
+              domainLock: [],
+              identifierNamesGenerator: 'hexadecimal',
+              identifiersPrefix: '',
+              ignoreRequireImports: true,
+              log: false,
+              numbersToExpressions: false,
+              renameGlobals: false,
+              reservedNames: [],
+              rotateStringArray: true,
+              seed: 0,
+              selfDefending: true,
+              shuffleStringArray: true,
+              simplify: true,
+              sourceMap: false,
+              sourceMapBaseUrl: '',
+              sourceMapFileName: '',
+              sourceMapMode: 'separate',
+              stringArray: true,
+              stringArrayEncoding: ['none'],
+              stringArrayThreshold: 0.1,
+              target: 'browser',
+              transformObjectKeys: false,
+              unicodeEscapeSequence: false,
+            },
+            []
+          )
+        )
       }
     },
   },

@@ -39,85 +39,196 @@ export const actions = {
 // }
 
 class DriveStorage {
-  async getItem(key) {
-    return await localforage.getItem(key)
+  async setupDrive() {
+    const self = this
+    // await new Promise((resolve) => setTimeout(resolve, 150))
+    // return false
+    // eslint-disable-next-line no-unused-vars
+    // await new Promise((resolve) => setTimeout(resolve, 200))
+    // eslint-disable-next-line no-unreachable
+    if (!self.initialized) {
+      // await Vue.prototype.$gapi.getGapiClient()
+      // eslint-disable-next-line no-unreachable
+      return await new Promise((resolve, reject) => {
+        Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
+          .list({
+            q: 'name="state.json"',
+            spaces: 'appDataFolder',
+            fields: 'files(id)',
+          })
+          .then(async (data) => {
+            // Creating a file if none is found, otherwise just continuing
+            if (data.result.files.length === 0) {
+              await Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files.create(
+                {
+                  resource: {
+                    name: 'state.json',
+                    parents: ['appDataFolder'],
+                  },
+                  fields: 'id',
+                }
+              )
+            } else if (data.result.files.length > 1) {
+              data.result.files
+                .filter((val, index, array) => index > 0)
+                .forEach((file) => {
+                  // eslint-disable-next-line no-unused-vars
+                  Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files.delete(
+                    {
+                      fileId: file.id,
+                    }
+                  )
+                })
+            }
+            return data.result.files[0].id
+          })
+          .then((stateFileId) => {
+            self.stateFileId = stateFileId
+            // Get the current state file
+            Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
+              .get({
+                fileId: self.stateFileId,
+                alt: 'media',
+              })
+              .then((data) => {
+                if (!data.result) {
+                  // The file was false, make it an empty json
+                  Vue.prototype.$gapi.clientProvider.client.gapi.client
+                    .request({
+                      path: '/upload/drive/v3/files/' + self.stateFileId,
+                      method: 'PATCH',
+                      params: {
+                        uploadType: 'media',
+                      },
+                      body: JSON.stringify({}),
+                    })
+                    .then((data) => {
+                      resolve()
+                    })
+                    .catch((e) => {
+                      reject(e)
+                    })
+                } else {
+                  resolve()
+                }
+              })
+          })
+          .catch((e) => {
+            reject(e)
+          })
+      })
+        .then(() => {
+          self.initialized = true
+          return true
+        })
+        .catch((e) => {
+          return false
+        })
+      // eslint-disable-next-line no-unreachable
+    } else {
+      return Vue.prototype.$gapi.isAuthenticated()
+    }
   }
 
-  async setItem(key, data) {
-    // console.log('WTF: ', key, ' ', data)
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms))
+  async getItem(key) {
+    const self = this
+    if (!(await self.setupDrive())) {
+      return await localforage.getItem(key)
     }
-    while (Vue.prototype.$gapi.clientProvider.client === null) {
-      await sleep(200)
-      console.log('Waiting for gapi client')
-    }
-
-    // eslint-disable-next-line no-unused-vars
-    const _ = new Promise((resolve, reject) => {
-      /*
-      $nuxt.$gapi.clientProvider.client.gapi.client.drive.files.list({
-  spaces: 'appDataFolder',
-  fields: 'nextPageToken, files(id, name, webContentLink, webViewLink)',
-  pageSize: 100
-}).then((list)=>{
-  files = JSON.parse(list.body).files
-files.forEach((val)=>{
-
-
-gapi.client.drive.files.get(
-    {fileId: val.id, alt: 'media'}).then((res)=>{
-console.log(res)
-})
-
-})
-})
-       */
-
+    // eslint-disable-next-line no-unreachable
+    return await new Promise((resolve, reject) => {
       Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
-        .create({
-          resource: {
-            name: 'state.json',
-            parents: ['appDataFolder'],
-          },
-          media: {
-            mimeType: 'application/json',
-            body: JSON.stringify(data),
-          },
-          fields: 'id',
+        .get({
+          fileId: self.stateFileId,
+          alt: 'media',
         })
-        .then((res) => {
-          // console.log('Upload: ', res)
-
-          Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
-            .list({
-              spaces: 'appDataFolder',
-              fields:
-                'nextPageToken, files(id, name, webContentLink, webViewLink)',
-              pageSize: 100,
-            })
-            .then((res) => {
-              // console.log(JSON.parse(res.body))
-              resolve()
-            })
+        .then(async (data) => {
+          if (key in data.result) {
+            await localforage.setItem(key, data.result[key])
+            resolve(data.result[key])
+          } else {
+            resolve(await localforage.getItem(key))
+          }
+        })
+        .catch((e) => {
+          reject(e)
         })
     })
-    return await localforage.setItem(key, data)
+  }
+
+  async setItem(key, value) {
+    const self = this
+    if (!(await this.setupDrive())) {
+      return await localforage.setItem(key, value)
+    }
+    await localforage.setItem(key, value)
+    // eslint-disable-next-line no-unreachable
+    return await Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
+      .get({
+        fileId: self.stateFileId,
+        alt: 'media',
+      })
+      .then(async (data) => {
+        data.result[key] = value
+        // The file was false, make it an empty json
+        await Vue.prototype.$gapi.clientProvider.client.gapi.client
+          .request({
+            path: '/upload/drive/v3/files/' + self.stateFileId,
+            method: 'PATCH',
+            params: {
+              uploadType: 'media',
+            },
+            body: JSON.stringify(data.result),
+          })
+          .then(() => {
+            return value
+          })
+      })
   }
 
   async removeItem(key) {
-    return await localforage.removeItem(key)
+    const self = this
+    if (!(await this.setupDrive())) {
+      return await localforage.removeItem(key)
+    }
+    await localforage.removeItem(key)
+    return await Vue.prototype.$gapi.clientProvider.client.gapi.client.drive.files
+      .get({
+        fileId: self.stateFileId,
+        alt: 'media',
+      })
+      .then((data) => {
+        delete data.result[key]
+        // The file was false, make it an empty json
+        Vue.prototype.$gapi.clientProvider.client.gapi.client.request({
+          path: '/upload/drive/v3/files/' + self.stateFileId,
+          method: 'PATCH',
+          params: {
+            uploadType: 'media',
+          },
+          body: JSON.stringify(data.result),
+        })
+      })
   }
 
   async clear() {
+    if (!(await this.setupDrive())) {
+      return await localforage.clear()
+    }
     return await localforage.clear()
   }
 
   async length() {
+    if (!(await this.setupDrive())) {
+      return await localforage.length()
+    }
     return await localforage.length()
   }
 
   async key(keyIndex) {
+    if (!(await this.setupDrive())) {
+      return await localforage.key(keyIndex)
+    }
     return await localforage.key(keyIndex)
   }
 
@@ -125,14 +236,19 @@ console.log(res)
     return localforage.config()
   }
 }
-
-const version = process.env.version ? process.env.version : '0'
 const vuexLocal = new VuexPersistence({
   storage: new DriveStorage(),
   supportCircular: true,
   asyncStorage: true,
-  key: 'state-' + version,
+  key: 'state-0',
   modules: ['general'],
+  restoreState: async (key, storage) => {
+    await Vue.prototype.$gapi.getGapiClient()
+    return await storage.getItem(key)
+  },
+  filter: (mutation) => {
+    return !mutation.type.startsWith('auth')
+  },
 })
 
 export const plugins = [vuexLocal.plugin]

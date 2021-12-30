@@ -13,7 +13,7 @@
                   K.I.S.S.
                 </h1>
                 <p>Kink Institute and Sex School</p>
-                <p class="red--text">Super early pre-alpha</p>
+                <!-- <p class="red--text">Super early pre-alpha</p> -->
                 <div style="margin-top: 1cm; margin-bottom: 1cm">
                   <v-btn
                     :to="localePath('get-started')"

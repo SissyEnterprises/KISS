@@ -10,19 +10,20 @@ Vue.use(VueGapi, {
 })
 
 export default class CustomScheme extends LocalScheme {
-  // Override `fetchUser` method of `local` scheme
-
-  // eslint-disable-next-line require-await
   async login(endpoint) {
     await Vue.prototype.$gapi.login()
     await this.$auth.fetchUser()
     this.$auth.$storage.setState('loggedIn', true)
+    // Workaround for getter too slow for vuex-persist
+    window.location.reload()
   }
 
   // eslint-disable-next-line require-await
   async logout(endpoint) {
     await Vue.prototype.$gapi.logout()
     this.$auth.reset()
+    // Workaround for getter too slow for vuex-persist
+    window.location.reload()
   }
 
   check() {
